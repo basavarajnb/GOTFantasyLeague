@@ -1,0 +1,22 @@
+.game-play{
+    height: 100%;
+    background: #333;
+}
+
+.game-rules{
+    background: #fff;
+    width: 100%;
+    min-height: 400px;
+    margin: 50px 0;
+    padding: 2%;
+}
+
+.title{
+    color : #333;
+    margin-bottom: 20px;
+}
+
+.collapse-header {
+    font-size: 1.5em;
+    vertical-align: bottom;
+}

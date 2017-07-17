@@ -19,7 +19,7 @@ export class AngularFireService {
     characters: FirebaseListObservable<any[]>;
 
     userObject: any = {};
-    userSubj  = new BehaviorSubject<any>(undefined);
+    userSubj = new BehaviorSubject<any>(undefined);
     charactersList: any = [];
 
     constructor(public db: AngularFireDatabase) {
@@ -43,10 +43,10 @@ export class AngularFireService {
         this.user.subscribe((response) => {
             if (response.$exists() === false) {
                 let tempUser: any = {};
-                tempUser.name = user.name;
-                tempUser.email = user.email;
-                tempUser.gender = user.gender;
-                tempUser.first_name = user.first_name;
+                tempUser.name = user.name ? user.name : "Anonymous";
+                tempUser.email = user.email ? user.email : "";
+                tempUser.gender = user.gender ? user.gender : "";
+                tempUser.first_name = user.first_name ? user.name : "Anonymous";
                 if (user.picture && user.picture.data && user.picture.data.url) {
                     tempUser.imageUrl = user.picture.data.url;
                 }

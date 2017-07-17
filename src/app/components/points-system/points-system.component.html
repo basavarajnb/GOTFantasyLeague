@@ -1,3 +1,113 @@
-<p>
-  points-system works!
-</p>
+<div class="game-play">
+  <div class="container">
+    <div class="row game-rules">
+      <h1 class="title text-center"> Points System </h1>
+
+
+      <div class="panel-list">
+        <div class="panel-container">
+
+          <app-collapse [collapseVisible]="true">
+            <span collase-panel-title class="align-middle collapse-header">Power Points</span>
+            <div collase-panel-content>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Criteria</th>
+                    <th>Points</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of powerPoints; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{item.action}}</td>
+                    <td>{{item.pointsString}} &nbsp; <i *ngIf="item.help !== ''" class="fa fa-question-circle" aria-hidden="true"
+                        title="{{item.help}}"></i></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </app-collapse>
+
+          <app-collapse [collapseVisible]="true">
+            <span collase-panel-title class="align-middle collapse-header">Voilance Points</span>
+            <div collase-panel-content>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Criteria</th>
+                    <th>Points</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of voilancePoints; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{item.action}}</td>
+                    <td>{{item.pointsString}} &nbsp; <i *ngIf="item.help !== ''" class="fa fa-question-circle" aria-hidden="true"
+                        title="{{item.help}}"></i></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </app-collapse>
+
+          <app-collapse [collapseVisible]="true">
+            <span collase-panel-title class="align-middle collapse-header">Character Points</span>
+            <div collase-panel-content>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Criteria</th>
+                    <th>Points</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of characterPoints; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{item.action}}</td>
+                    <td>{{item.pointsString}} &nbsp; <i *ngIf="item.help !== ''" class="fa fa-question-circle" aria-hidden="true"
+                        title="{{item.help}}"></i></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </app-collapse>
+
+
+          <app-collapse [collapseVisible]="true">
+            <span collase-panel-title class="align-middle collapse-header">Bold Points</span>
+            <div collase-panel-content>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Criteria</th>
+                    <th>Points</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of boldPoints; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{item.action}}</td>
+                    <td>{{item.pointsString}} &nbsp; <i *ngIf="item.help !== ''" class="fa fa-question-circle" aria-hidden="true"
+                        title="{{item.help}}"></i></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </app-collapse>
+
+
+
+
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>

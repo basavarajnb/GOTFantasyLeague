@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { PlayerService } from "app/services/player.service";
 import { Router } from '@angular/router';
 import { CharacterService } from "app/services/character.service";
 import { UserService } from "app/services/user.service";
+import { MdDialog } from "@angular/material";
+import { CommonDialogComponent } from "app/controls/dialogs/common-dialog/common-dialog.component";
 
 @Component({
   selector: 'app-select-team',
@@ -49,7 +51,9 @@ export class SelectTeamComponent implements OnInit {
   constructor(private playerService: PlayerService,
     private router: Router,
     private characterService: CharacterService,
-    private userService: UserService) { }
+    private userService: UserService,
+    public dialog: MdDialog) {
+  }
 
   submit() {
     let expctedCount = this.levels.level1.maxPlayers +
@@ -65,7 +69,26 @@ export class SelectTeamComponent implements OnInit {
       this.levels.level5.playersSelected.length;
 
     if (selectedCount < expctedCount) {
-      alert("Before Submit, You have to select " + (expctedCount - selectedCount) + " more player(s)");
+      let alertMessage = "";
+      if (this.levels.level1.maxPlayers != this.levels.level1.playersSelected.length) {
+        alertMessage = alertMessage + (this.levels.level1.maxPlayers - this.levels.level1.playersSelected.length) + " Player from Level 1, ";
+      }
+      if (this.levels.level2.maxPlayers != this.levels.level2.playersSelected.length) {
+        alertMessage = alertMessage + (this.levels.level2.maxPlayers - this.levels.level2.playersSelected.length) + " Player from Level 2, ";
+      }
+      if (this.levels.level3.maxPlayers != this.levels.level3.playersSelected.length) {
+        alertMessage = alertMessage + (this.levels.level3.maxPlayers - this.levels.level3.playersSelected.length) + " Player(s) from Level 3, ";
+      }
+      if (this.levels.level4.maxPlayers != this.levels.level4.playersSelected.length) {
+        alertMessage = alertMessage + (this.levels.level4.maxPlayers - this.levels.level4.playersSelected.length) + " Player from Level 4, ";
+      }
+      if (this.levels.level5.maxPlayers != this.levels.level5.playersSelected.length) {
+        alertMessage = alertMessage + (this.levels.level5.maxPlayers - this.levels.level5.playersSelected.length) + " Player from Level 5, ";
+      }
+
+      let dialogRef = this.dialog.open(CommonDialogComponent, {
+        data: "Before Submit, You have to select " + alertMessage,
+      });
     }
     else {
       let players = [];

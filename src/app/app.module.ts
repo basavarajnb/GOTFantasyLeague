@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdDialogModule, MdButtonModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import {HashLocationStrategy, Location, LocationStrategy} from '@angular/common';
+import { HashLocationStrategy, Location, LocationStrategy } from '@angular/common';
 import { routing } from './app.routing';
 
 import { AppComponent } from './app.component';
@@ -30,6 +32,8 @@ import { PlayerService } from "app/services/player.service";
 import { UserTeamComponent } from './components/dashboard/user-team/user-team.component';
 import { AngularFireService } from "app/services/angularfire.service";
 import { CharacterService } from "app/services/character.service";
+import { NewUserDialogComponent } from './controls/dialogs/new-user-dialog/new-user-dialog.component';
+import { CommonDialogComponent } from './controls/dialogs/common-dialog/common-dialog.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCctnc06-6uMKboihVzKOowBd7gpy1-TW0",
@@ -56,7 +60,13 @@ export const firebaseConfig = {
     SelectTeamComponent,
     CollapseComponent,
     LevelPanelsComponent,
-    UserTeamComponent
+    UserTeamComponent,
+    NewUserDialogComponent,
+    CommonDialogComponent
+  ],
+  entryComponents: [
+    NewUserDialogComponent,
+    CommonDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -64,11 +74,14 @@ export const firebaseConfig = {
     FacebookModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    BrowserAnimationsModule,
+    MdDialogModule,
+    MdButtonModule,
   ],
-  providers: [AuthService, SessionService, UserService, PlayerService, AngularFireService, 
-  CharacterService, Location,
-  {provide: LocationStrategy, useClass: HashLocationStrategy}
+  providers: [AuthService, SessionService, UserService, PlayerService, AngularFireService,
+    CharacterService, Location,
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })

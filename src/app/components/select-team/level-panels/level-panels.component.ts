@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Level } from "app/common/character";
+import { CommonDialogComponent } from "app/controls/dialogs/common-dialog/common-dialog.component";
+import { MdDialog } from "@angular/material";
 
 @Component({
   selector: 'app-level-panels',
@@ -11,7 +13,7 @@ export class LevelPanelsComponent implements OnInit {
 
   disableButtons: boolean = false;
 
-  constructor() { }
+  constructor(public dialog: MdDialog) { }
 
   ngOnInit() {
     this.disableOrEnableButtons();
@@ -19,14 +21,18 @@ export class LevelPanelsComponent implements OnInit {
 
   addPlayer(player) {
     if (this.level.playersSelected.find(x => x.id === player.id)) {
-      alert("Player is already added");
+      let dialogRef = this.dialog.open(CommonDialogComponent, {
+        data: "Player is already added",
+      });
     }
     else {
       if (this.level.playersSelected.length < this.level.maxPlayers) {
         this.level.playersSelected.push(player);
       }
       else {
-        alert("Can not add more than " + this.level.maxPlayers + " Players, in Level :" + this.level.level);
+        let dialogRef = this.dialog.open(CommonDialogComponent, {
+          data: "Can not add more than " + this.level.maxPlayers + " Players, in Level :" + this.level.level,
+        });
       }
     }
     this.disableOrEnableButtons();

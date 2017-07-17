@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireService } from "app/services/angularfire.service";
 import { UserService } from "app/services/user.service";
+import { CommonDialogComponent } from "app/controls/dialogs/common-dialog/common-dialog.component";
+import { MdDialog } from "@angular/material";
 
 export enum TeamMode {
   view,
@@ -35,7 +37,8 @@ export class UserTeamComponent implements OnInit {
   private currentView = "grid";
 
   constructor(private router: Router,
-    private userService: UserService) { }
+    private userService: UserService,
+    public dialog: MdDialog) { }
 
   tableView() {
     this.currentView = "table";
@@ -83,23 +86,31 @@ export class UserTeamComponent implements OnInit {
 
   savePlayers() {
     this.userService.updateUserTeam(this.userTeamPlayers).then(() => {
-      alert("Team is Saved Successfully.");
+      let dialogRef = this.dialog.open(CommonDialogComponent, {
+        data: "Team is Saved Successfully.",
+      });
       this.isDirty = false;
       this.userService.isUserTeamDirty = false;
     })
-    .catch(() => {
-      alert("Error occurred while saving the Team.");
-    });
-    }
+      .catch(() => {
+        let dialogRef = this.dialog.open(CommonDialogComponent, {
+          data: "Error occurred while saving the Team.",
+        });
+      });
+  }
 
   deletePlayers() {
     this.userService.removeUserTeam().then(() => {
       this.unsetDifferentPlayers();
-      alert("Team is Deleted Successfully.")
+      let dialogRef = this.dialog.open(CommonDialogComponent, {
+        data: "Team is Deleted Successfully.",
+      });
     })
-    .catch(() => {
-      alert("Error occurred while deleting the Team.");
-    });
+      .catch(() => {
+        let dialogRef = this.dialog.open(CommonDialogComponent, {
+          data: "Error occurred while deleting the Team.",
+        });
+      });
   }
 
   clearChanges() {

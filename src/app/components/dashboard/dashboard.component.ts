@@ -3,6 +3,11 @@ import { SessionService } from "app/services/session.service";
 import { PlayerService } from "app/services/player.service";
 import { UserService } from "app/services/user.service";
 
+import { MdDialog, MdDialogRef } from '@angular/material';
+import { NewUserDialogComponent } from "app/controls/dialogs/new-user-dialog/new-user-dialog.component";
+import { CommonDialogComponent } from "app/controls/dialogs/common-dialog/common-dialog.component";
+
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -29,11 +34,12 @@ export class DashboardComponent implements OnInit {
 
   constructor(private sessionService: SessionService,
     private playerService: PlayerService,
-    private userService: UserService) {
+    private userService: UserService,
+    public dialog: MdDialog) {
   }
 
   ngOnInit() {
-    this.subscription  =this.userService.$getUserDetailsSubj().subscribe((user) => {
+    this.subscription = this.userService.$getUserDetailsSubj().subscribe((user) => {
       if (user) {
         this.user = user;
         console.log("DASHBOARD USER   ----> ", this.user);
@@ -43,6 +49,11 @@ export class DashboardComponent implements OnInit {
           this.arePlayersSelected = true;
           console.log("arePlayersSelected -> ", this.selectedPlayers);
         }
+        else {
+          let dialogRef = this.dialog.open(CommonDialogComponent, {
+            data: "Add Players and SAVE TEAM after adding players.",
+          });
+        }
       }
     });
   }
@@ -50,8 +61,7 @@ export class DashboardComponent implements OnInit {
     this.showInfo = false;
   }
 
-   ngOnDestroy() {
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
 }

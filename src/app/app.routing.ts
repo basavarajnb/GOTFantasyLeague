@@ -8,6 +8,7 @@ import { LeaderboardComponent } from './components/leaderboard/leaderboard.compo
 import { AuthService } from "app/services/auth.service";
 import { DashboardComponent } from "app/components/dashboard/dashboard.component";
 import { SelectTeamComponent } from "app/components/select-team/select-team.component";
+import { PointsSystemComponent } from "app/components/points-system/points-system.component";
 
 const appRoutes: Routes = [
   {
@@ -38,7 +39,7 @@ const appRoutes: Routes = [
       metaDesc: ''
     },
   },
-    {
+  {
     path: 'select-team',
     component: SelectTeamComponent,
     canActivate: [AuthService],
@@ -63,6 +64,16 @@ const appRoutes: Routes = [
     component: GamePlayComponent,
     data: {
       title: 'GOT Fantasy League | GamePlay',
+      metaKeywords: '',
+      metaDesc: ''
+    },
+
+  },
+    {
+    path: 'points-system',
+    component: PointsSystemComponent,
+    data: {
+      title: 'GOT Fantasy League | Points System',
       metaKeywords: '',
       metaDesc: ''
     },
