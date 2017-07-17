@@ -1,0 +1,9 @@
+<div *ngIf="collapseVisible" class="collase-panel-container">
+    <div class="collase-panel-header" (click)="toggleCollapseBody()">
+        <i class="fa fa-2x fa-caret-right accordian-arrow-icon align-middle" [class.rotate-ac-90]="collaseBodyVisible"></i>
+        <ng-content select="[collase-panel-title]"></ng-content>
+    </div>
+    <div *ngIf="collaseBodyVisible" class="collase-panel-body">
+        <ng-content select="[collase-panel-content]"></ng-content>
+    </div>
+</div>

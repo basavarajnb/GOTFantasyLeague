@@ -1,0 +1,231 @@
+<div class="team-player-container">
+  <div class="team-player-container-header ">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="float-left p-10 ml-20 color-white">
+          Selected Team Players
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div *ngIf="currentMode == 0" class="float-right p-5">
+          <div class="inline-block mr-10">
+            <button class="btn btn-success" (click)="savePlayers()">Save Team</button>
+          </div>
+          <div class="inline-block mr-10">
+            <button class="btn btn-danger" *ngIf="isDirty" (click)="clearChanges()">Undo Changes</button>
+            <button class="btn btn-danger" *ngIf="!isDirty" (click)="deletePlayers()">Delete Team</button>
+          </div>
+          <div class="inline-block mr-10">
+            <button class="btn btn-primary" (click)="editPlayers()">Edit Team</button>
+          </div>
+          <div class="inline-block mr-10">
+            <button class="btn btn-primary" (click)="tableView()">Table View</button>
+          </div>
+          <div class="inline-block mr-10">
+            <button class="btn btn-primary" (click)="gridView()">Grid View</button>
+          </div>
+        </div>
+        <div *ngIf="currentMode == 1" class="float-right p-5">
+          <div class="inline-block mr-10">
+            <button class="btn btn-primary">Save Team</button>
+          </div>
+          <div class="inline-block mr-10">
+            <button class="btn btn-primary">Cancel Edit</button>
+          </div>
+        </div>
+        <div *ngIf="currentMode == 2" class="float-right p-5">
+          <div class="inline-block mr-10">
+            <button class="btn btn-primary" (click)="addPlayers()">Add Players</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="team-player-container-body">
+    <div class="team-player-grid-container">
+      <div *ngIf="currentMode == 2">
+        <div class="row">
+          <div class="col-md-12 header-text">
+            <span>Add Player to the Team!</span>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="currentMode == 0">
+        <div *ngIf="currentView == 'grid'">
+
+
+
+          <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6 right-border">
+              <div class="row">
+                <div class="col-md-12 header-text">
+                  <span>The Ruler</span>
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+
+                  <div class="player-card" [ngStyle]="{'background-image': 'url(' +  kingOrQueen.img  + ')'}">
+                    <div class="player">
+                      <div class="player-details">
+                        <br> <br> {{kingOrQueen.name}}
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-6">
+              <div class="row">
+                <div class="col-md-12 header-text">
+                  <span>The Hand</span>
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+
+                  <div class="player-card the-hand" [ngStyle]="{'background-image': 'url(' +  theHand.img  + ')'}">
+                    <div class="player">
+                      <div class="player-details">
+                        <br> <br> {{theHand.name}}
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <hr/>
+
+          <div class="row">
+            <div class="col-md-12 header-text">
+              <span>Other Team Players</span>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3" *ngFor="let player of otherPlayers">
+
+              <div class="player-card" [ngStyle]="{'background-image': 'url(' +  player.img  + ')'}">
+                <div class="player">
+                  <div class="player-details">
+                    {{player.name}}
+                    <br> <br>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <div *ngIf="currentView == 'table'">
+
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Level</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let player of userTeamPlayers; let i = index">
+                  <td>{{i+1}}</td>
+                  <td><img [src]="player.img" width="100" height="100" alt="myimage" /></td>
+                  <td>{{player.name}}</td>
+                  <td>{{player.level}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="row" *ngIf="currentMode == 1">
+        <div class="col-sm-12 col-md-6 col-lg-6 right-border">
+          <div class="row">
+            <div class="col-md-12 header-text">
+              <span>Choose the King or Queen</span>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+
+              <div class="player-card edit-king-or-queen">
+                <div class="player">
+                  <div class="player-details">
+                    <br> <br>
+                    <div class="dropdown">
+                      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="true"> 
+                            Select King or Queen 
+                            <span class="caret"></span>
+                          </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li *ngFor="let playerName of selectedPlayersNames"><a href="#">{{playerName}}</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <div class="row">
+            <div class="col-md-12 header-text">
+              <span>Choose the hand</span>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+
+              <div class="player-card edit-the-hand">
+                <div class="player">
+                  <div class="player-details">
+                    <br> <br>
+                    <div class="dropdown">
+                      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="true"> 
+                            The Hand 
+                            <span class="caret"></span>
+                          </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li *ngFor="let playerName of selectedPlayersNames"><a href="#">{{playerName}}</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="team-player-table-container">
+
+    </div>
+
+  </div>
+</div>

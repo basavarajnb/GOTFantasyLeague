@@ -1,0 +1,23 @@
+.rotate-ac-90 {
+    transform: rotate(90deg);
+}
+.collase-panel-container {
+    border: 1px solid darkgray;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+.collase-panel-header {
+    color: black;
+    background-color: #a0a0a0;
+    padding: 10px;
+    font-weight: bold;    
+}
+.collase-panel-body {
+    padding: 15px;
+}
+
+.accordian-arrow-icon {
+    margin-right: 10px;
+    user-select: none;
+    transition: all .5s ease;
+}

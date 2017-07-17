@@ -1,0 +1,93 @@
+.inline-block {
+    display: inline-block;
+}
+/* Note Styles */
+.note-container {
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #333;    
+}
+
+.dashboard-header-container {
+    background: #333;
+}
+.dashboard-header {
+    color: white;
+    margin: 0px auto;
+}
+
+.float-left {
+    float: left;
+}
+.p-10 {
+padding: 10px;
+}
+.ml-20 {
+        margin-left: 20px;
+}
+
+.float-right {
+    float: right;
+}
+
+.p-5 {
+padding: 5px;
+}
+.ml-20 {
+        margin-left: 20px;
+}
+
+.infobar {
+    margin: 0px auto;
+    color: #FFCCCC;
+    border: 1px solid #FFCCCC;
+}
+
+.board-container {
+    width: 90%;
+    margin: 0px auto;
+    margin-top: 10px;
+}
+.width-49 {
+    width: 49%;
+}
+
+
+.close-button {
+    text-decoration: none;
+    background-color: transparent;
+    border: 1px solid #FFCCCC;
+    padding: 2px 3px;
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+.huge {
+    font-size: 60px;
+}
+
+.fs-18 {
+    font-size: 18px;
+}
+.height-20 {
+    height: 20px;
+}
+.fa-7x {
+    font-size: 7em;
+}
+.mr-10 {
+    margin-right: 10px;
+}
+
+.panel-green {
+    border-color: #5cb85c;
+}
+.panel-green > .panel-heading {
+    border-color: #5cb85c;
+    color: white;
+    background-color: #5cb85c;
+}
+
+

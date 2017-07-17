@@ -1,0 +1,48 @@
+<div class="level-panel-container">
+  <div class="row">
+    <app-collapse [collapseVisible]="true">
+      <span collase-panel-title class="align-middle collapse-header">Level {{level.level}} Players : Select {{level.maxPlayers}} Player(s)</span>
+      <div collase-panel-content>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="selected-players">
+              <span class="selected-text"> Selected Players for Level {{level.level}} : </span>
+
+              <div class="inline-block" *ngFor="let player of level.playersSelected">
+                <button class="selected-player btn btn-info" (click)="removePlayerFromLevel(player)">{{player.name}}  &nbsp; <span style="color:black"> X </span> </button>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3" *ngFor="let player of level.allPlayers">
+            <div class="player-card" [ngStyle]="{'background-image': 'url(' +  player.img  + ')'}">
+              <div class="player">
+                <div class="player-details">
+                  {{player.name}}
+                  <br> <br>
+                  <button class="btn btn-default" [class.disabled]="disableButtons" (click)="addPlayer(player)"> Add To Team </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12">
+
+            <div class="selected-players">
+              <span class="selected-text"> Selected Players for Level {{level.level}} : </span>
+
+              <div class="inline-block" *ngFor="let player of level.playersSelected">
+                <button class="selected-player btn btn-info" (click)="removePlayerFromLevel(player)">{{player.name}}  &nbsp; <span style="color:black"> X </span> </button>
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </app-collapse>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="alliance">
+    <div class="text-center alliance-content">
+        <div class="container text-center padding-top-bottom-50">
+            <div class="row players">
+                <div class="player-card" *ngFor="let player of players" [ngStyle]="{'background-image': 'url(' +  player.img  + ')'}">
+                    <div class="player">
+                        <div class="player-details">
+                            {{player.name}}
+                            <br> <br>
+                            <button class="btn btn-default"> Add To Team </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    <div class="clearfix"> </div>
+    <div>
+        <!--<audio autoplay class="playa" di="audio" src="{{themeSource}}">-->
+            <!--<source [src]="themeSource"> Your browser does not support the audio element.-->
+        <!--</audio>-->
+    </div>
+</div>

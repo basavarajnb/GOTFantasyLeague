@@ -1,0 +1,124 @@
+<div class="dashboard-container">
+  <div class="container">
+    <div class="dashboard-header-container">
+      <div class="dashboard-header row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+          <div class="float-left p-10 ml-20">
+            Welcome {{user?.name}} !
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+          <div class="float-right p-5">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="infobar-container ">
+      <div *ngIf="showInfo" class="infobar">
+        <div class="info-text">
+          <div class="inline-block width-49">
+            <div class="float-left p-10 ml-20">
+              {{message}}
+            </div>
+          </div>
+          <div class="inline-block width-49">
+            <div class="float-right p-5">
+              <button class="close-button" (click)="closeInfobar()">X</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="note-container ">
+      <div class="">
+        Note: Make sure to Save Team before signing off.
+      </div>
+    </div>
+
+    <div class="board-container">
+
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <div class="row">
+                    <div class="col-xs-3">
+                      <i class="fa fa-trophy fa-7x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                      <div class="huge">{{user?.rank}}</div>
+                      <div class="fs-18">Rank!</div>
+                    </div>
+                  </div>
+                </div>
+                <a>
+                  <div class="panel-footer">
+                    <div class="height-20">
+                      <span class="pull-left">Previous Week's Rank</span>
+                      <span class="pull-right">0</span>
+                    </div>
+                    <div class="height-20">
+                      <span class="pull-left">Difference</span>
+                      <span class="pull-right">0</span>
+                    </div>
+
+                    <div class="clearfix"></div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <div class="panel panel-green">
+                <div class="panel-heading">
+                  <div class="row">
+                    <div class="col-xs-3">
+                      <i class="fa fa-star fa-7x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                      <div class="huge">{{user?.points}}</div>
+                      <div class="fs-18">Points!</div>
+                    </div>
+                  </div>
+                </div>
+                <a>
+                  <div class="panel-footer">
+                    <div class="height-20">
+                      <span class="pull-left">Previous Week's Points</span>
+                      <span class="pull-right">0</span>
+                    </div>
+                    <div class="height-20">
+                      <span class="pull-left">Difference</span>
+                      <span class="pull-right">0</span>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="user-team-container">
+      <app-user-team [selectedPlayers]="selectedPlayers" [isDirty]="isDirty">
+
+      </app-user-team>
+
+
+    </div>
+
+    <div>
+
+    </div>
+  </div>
+</div>

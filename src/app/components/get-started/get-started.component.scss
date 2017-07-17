@@ -1,0 +1,52 @@
+$assetPath : "/assets/images";
+
+.get-started{
+    background: #333;
+    height: calc(100% - 50px);
+    background: url(#{$assetPath}/throne.jpeg) no-repeat center; 
+    background-size: cover;
+}
+.title{
+    color: #fff;
+}
+
+.title:hover{
+    cursor: pointer;
+}
+
+.get-started-cards{
+    box-sizing: border-box;
+}
+.get-started-card{
+    height: 500px;
+    background: #fff;
+    border-radius: 2px;
+    margin : 50px;
+    padding : 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.facebook-login-btn{
+    min-width: 150px;
+    height: 40px;
+    border-radius: 1px;
+    font-size: 1.2em;
+    position: absolute;
+    top : 50%;
+    right: 20%;
+    transform: translate(-20%,-50%);
+
+    
+}
+
+.winter{
+    background: url(#{$assetPath}/winter.jpg) no-repeat center; 
+    background-size: cover;
+}
+.castle{
+    background: url(#{$assetPath}/castle.jpg) no-repeat center; 
+    background-size: cover; 
+}
