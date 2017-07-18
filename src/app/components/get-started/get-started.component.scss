@@ -50,6 +50,7 @@ $assetPath : "/assets/images";
     background-size: cover; 
 }
 
+
 @media(max-width : 34em){
     .get-started{      
         background: url(#{$assetPath}/iron-throne-mobile.jpg) no-repeat center; 
@@ -62,4 +63,6 @@ $assetPath : "/assets/images";
         left : 50%;
         transform: translate(-50%,-50%);
     }
+
 }
+

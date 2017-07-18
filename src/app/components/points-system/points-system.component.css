@@ -1,4 +1,6 @@
 .game-play{
+
+    height: 100;
     background: #333;
 }
 
@@ -23,4 +25,3 @@
 .collapse-header:hover{
     cursor: pointer;
 }
-

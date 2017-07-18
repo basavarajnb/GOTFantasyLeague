@@ -290,18 +290,6 @@ export class PointsSystemComponent implements OnInit {
       help: "",
     },
     {
-      action: "Funny one liners",
-      pointsString: "5",
-      points: 5,
-      help: "",
-    },
-    {
-      action: "Funny one liners",
-      pointsString: "5",
-      points: 5,
-      help: "",
-    },
-    {
       action: "Be Evil",
       pointsString: "7",
       points: 7,
