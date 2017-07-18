@@ -3,8 +3,9 @@ $assetPath : "/assets/images";
 .get-started{
     background: #333;
     height: calc(100% - 50px);
-    background: url(#{$assetPath}/throne.jpeg) no-repeat center; 
+    background: url(#{$assetPath}/throne.jpg) no-repeat center; 
     background-size: cover;
+    box-sizing: border-box;
 }
 .title{
     color: #fff;
@@ -50,3 +51,32 @@ $assetPath : "/assets/images";
     background: url(#{$assetPath}/castle.jpg) no-repeat center; 
     background-size: cover; 
 }
+
+@media(max-width : 34em) {
+    .get-started{      
+    background: url(#{$assetPath}/iron-throne-mobile.jpg) no-repeat center; 
+}
+
+.facebook-login-btn {
+    position: absolute;
+
+    top : 50%;
+    left : 50%;
+    transform: translate(-50%,-50%);
+    }
+}
+
+
+@media(max-width : 34em){
+    .get-started{      
+        background: url(#{$assetPath}/iron-throne-mobile.jpg) no-repeat center; 
+    }
+
+    .facebook-login-btn{
+        position: absolute;
+        
+        top : 50%;
+        left : 50%;
+        transform: translate(-50%,-50%);
+    }
+} 

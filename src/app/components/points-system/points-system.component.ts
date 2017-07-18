@@ -77,6 +77,12 @@ export class PointsSystemComponent implements OnInit {
       help: "",
     },
     {
+      action: "Acquire Dragon Glass",
+      pointsString: "10",
+      points: 10,
+      help: "",
+    },
+    {
       action: "Have a Vision/Prophecy",
       pointsString: "20",
       points: 20,
@@ -144,7 +150,7 @@ export class PointsSystemComponent implements OnInit {
     }
   ];
 
-  voilancePoints:IPointBase[] = [
+  voilancePoints: IPointBase[] = [
     {
       action: "Random Kill",
       pointsString: "10*",
@@ -215,10 +221,16 @@ export class PointsSystemComponent implements OnInit {
 
   boldPoints = [
     {
-      action: "Hitting on Someone",
+      action: "Bold Come-ons",
       pointsString: "5",
       points: 5,
-      help: "Flirting",
+      help: "",
+    },
+    {
+      action: "Kiss",
+      pointsString: "5",
+      points: 5,
+      help: "",
     },
     {
       action: "Sex with random character",
@@ -239,7 +251,7 @@ export class PointsSystemComponent implements OnInit {
       help: "",
     },
     {
-      action: "Naked (PG-13)",
+      action: "Half Naked",
       pointsString: "5",
       points: 5,
       help: "",
@@ -252,11 +264,41 @@ export class PointsSystemComponent implements OnInit {
     }
   ];
 
-  characterPoints:IPointBase[]  = [
+  characterPoints: IPointBase[] = [
+    {
+      action: "Most Favorite Character Of The Week",
+      pointsString: "15",
+      points: 15,
+      help: "",
+    },
+    {
+      action: "Second Most Favorite Character Of The Week",
+      pointsString: "10",
+      points: 10,
+      help: "",
+    },
+    {
+      action: "Third Most Favorite Character Of The Week",
+      pointsString: "5",
+      points: 5,
+      help: "",
+    },
     {
       action: "Funny one liners",
       pointsString: "5",
       points: 5,
+      help: "",
+    },
+    {
+      action: "Be Evil",
+      pointsString: "7",
+      points: 7,
+      help: "",
+    },
+    {
+      action: "Show Kindness",
+      pointsString: "7",
+      points: 7,
       help: "",
     },
     {

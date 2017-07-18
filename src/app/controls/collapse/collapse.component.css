@@ -21,3 +21,6 @@
     user-select: none;
     transition: all .5s ease;
 }
+.collase-panel-header:hover{
+    cursor: pointer;
+} 
