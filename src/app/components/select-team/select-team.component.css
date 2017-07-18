@@ -20,7 +20,7 @@
     margin-bottom: 15px;
 }
 .select-team-header {
-    color: white;
+    color: #fff;
     width: 90%;
     margin: 0px auto;
 }
@@ -40,9 +40,19 @@
 
 /* Note Styles */
 .note-container {
-    color: white;
+    color: #333;
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 10px;
-    border: 1px solid white;    
+}
+
+
+.select-team-content{
+    padding: 25px;
+    margin: 25px;
+    background: #f5f5f5;
+}
+
+.btn{
+    border-radius: 0 !important; 
 }

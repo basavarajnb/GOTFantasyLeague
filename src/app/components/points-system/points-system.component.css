@@ -1,5 +1,4 @@
 .game-play{
-    height: 100%;
     background: #333;
 }
 
@@ -20,3 +19,8 @@
     font-size: 1.5em;
     vertical-align: bottom;
 }
+
+.collapse-header:hover{
+    cursor: pointer;
+}
+

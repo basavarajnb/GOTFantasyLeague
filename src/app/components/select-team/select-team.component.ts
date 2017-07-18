@@ -100,7 +100,7 @@ export class SelectTeamComponent implements OnInit {
 
       this.userService.setLocalSelectedPlayers(players);
 
-      console.log("this.levels -> ", this.levels);
+      
       this.router.navigate(["/dashboard"]);
     }
   }
@@ -112,7 +112,7 @@ export class SelectTeamComponent implements OnInit {
   ngOnInit() {
     this.characterService.$getCharactersListSubj().subscribe((players) => {
       this.players = players;
-      console.log("SELECT TEAM:  this.players ->>>>>>>>> ", this.players);
+      
 
       this.players.forEach((player) => {
         if (player) {

@@ -31,3 +31,10 @@ $fallback-color : #333;
     border-radius: 1px;
     font-size: 1.2em; 
 }
+
+
+@media(max-width : 34em){
+    .home-splash{
+        background: url(#{$assetPath}/splash-home-mobile.jpg) no-repeat center; 
+    }
+}

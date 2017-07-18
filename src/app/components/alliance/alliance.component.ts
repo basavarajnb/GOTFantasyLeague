@@ -35,7 +35,7 @@ export class AllianceComponent implements OnInit {
     // }
 
     //                     .player-card:nth-child(24){
-    //     background: url(#{$assetPath}/lyanna.png) no-repeat left;  
+    //     background: url(#{$assetPath}/lyanna.jpg) no-repeat left;  
     // }
 
 

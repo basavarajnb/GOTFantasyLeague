@@ -20,7 +20,7 @@ export class SessionService {
     fbInit() {
         // Localhost 4600 - 455075384862999 
         // gotfantasyleague - 1593925954014511
-        console.log("AppComponent FB Init");
+        
         let initParams: InitParams = {
             appId: '1593925954014511',
             xfbml: true,
@@ -68,7 +68,6 @@ export class SessionService {
             .then((response) => {
                 let userID = response.authResponse.userID;
                 this.fb.api('/me?fields=id,name,first_name,gender,email,picture').then((user) => {
-                    console.log("Logged In User -> ", user);
                     this.loggedIn(user);
                 });
             })
@@ -93,7 +92,6 @@ export class SessionService {
         this.fb.logout().then(() => {
             this.isUserLoggedIn = false;
             this.user = undefined;
-            console.log("User Logged Out");
             this.clearSessionDetails();
             this.loggedInSubject.next(undefined);
             this.router.navigate(['/']);
