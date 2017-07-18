@@ -24,7 +24,7 @@ export class SessionService {
         // gotfantasyleague - 1593925954014511
         
         let initParams: InitParams = {
-            appId: '1593925954014511',
+            appId: '455075384862999',
             xfbml: true,
             version: 'v2.8'
         };

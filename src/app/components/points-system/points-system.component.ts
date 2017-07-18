@@ -224,13 +224,13 @@ export class PointsSystemComponent implements OnInit {
       action: "Bold Come-ons",
       pointsString: "5",
       points: 5,
-      help: "Flirting",
+      help: "",
     },
     {
       action: "Kiss",
       pointsString: "5",
       points: 5,
-      help: "Flirting",
+      help: "",
     },
     {
       action: "Sex with random character",
