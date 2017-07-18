@@ -22,7 +22,7 @@ export class SessionService {
     fbInit() {
         // Localhost 4600 - 455075384862999 
         // gotfantasyleague - 1593925954014511
-        console.log("AppComponent FB Init");
+        
         let initParams: InitParams = {
             appId: '1593925954014511',
             xfbml: true,
@@ -68,7 +68,6 @@ export class SessionService {
                 tempUser.rank = user.rank ? user.rank : 0;
                 tempUser.points = user.points ? user.points : 0;
                 this.loggedIn(tempUser);
-                console.log("user  ->>>>>>>>>>>>>>>>>", tempUser);
             });
             // this.fbLogIn();
         }
@@ -85,7 +84,6 @@ export class SessionService {
             .then((response) => {
                 let userID = response.authResponse.userID;
                 this.fb.api('/me?fields=id,name,first_name,gender,email,picture').then((user) => {
-                    console.log("Logged In User -> ", user);
                     this.loggedIn(user);
                 });
             })
@@ -121,7 +119,6 @@ export class SessionService {
                 this.eraseSessionAndLogout();
             }
         });
-
     }
 
     eraseSessionAndLogout() {

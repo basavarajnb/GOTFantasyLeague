@@ -16,7 +16,7 @@ export class CharacterService {
 
     constructor(private angularFireService: AngularFireService) {
         this.angularFireService.getCharacterList().subscribe((response) => {
-            console.log("Got the Characters ----->  ", response);
+            
             this.charactersList = response;
             this.charactersSubj.next(this.charactersList);
         });

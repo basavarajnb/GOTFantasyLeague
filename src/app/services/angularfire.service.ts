@@ -62,26 +62,18 @@ export class AngularFireService {
 
                 this.user.set(tempUser);
                 this.userObject = tempUser;
-                console.log("New User is Registered :", tempUser);
+                
             }
             else {
-                console.log("User Already Exists :", response);
+                
                 this.userObject = response;
             }
             this.userSubj.next(this.userObject);
         });
-        // this.item = this.angularFireService.getUserObject(user.id);
-        // this.item.subscribe((abc) => {
 
-        //     console.log("this.item From DB : ", abc);
-        //     console.log("this.item From DB : ", abc.$exists());
-
-        // });
     }
 
     updateUserTeam(teamPlayers) {
-        console.log("Before : this.userObject", this.userObject);
-        console.log("Before : this.teamPlayers", teamPlayers);
         this.updatePrviousSelectedPlayers();
         return this.user.update({ currentSelectedPlayers: teamPlayers }).then(() => {
         });

@@ -1,52 +1,54 @@
 <div class="select-team-container">
   <div class="container margin-bottom-10">
+    <div class="select-team-content">
     <div class="row">
       <div class="select-team-header-container">
-      <div class="select-team-header row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-          <div class="float-left">
-            <span class="header-text"> Select Team </span>
+        <div class="select-team-header row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+            <div class="float-left">
+              <span class="header-text"> Select Team </span>
+            </div>
           </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-          <div class="float-right p-10">
-            <button class="submit-team-button btn btn-success " (click)="submit()">Submit Team</button>
-            <button class="submit-team-button btn btn-danger " (click)="cancel()">Cancel</button>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+            <div class="float-right p-10">
+              <button class="submit-team-button btn btn-success " (click)="submit()">Submit Team</button>
+              <button class="submit-team-button btn btn-danger " (click)="cancel()">Cancel</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="level-container">
-    <div class="note-container">
-      Note: You must select at least one player from each level. You must select 2 players in level 3. You can see the selected players at the top and bottom of each level panel. You can click on button with "X" to de-select player.
+    <div class="level-container">
+      <div class="note-container">
+        Note: You must select at least one player from each level. You must select 2 players in level 3. You can see the selected
+        players at the top and bottom of each level panel. You can click on button with "X" to de-select player.
+      </div>
+
+      <app-level-panels [level]="levels.level5"> </app-level-panels>
+      <app-level-panels [level]="levels.level4"> </app-level-panels>
+      <app-level-panels [level]="levels.level3"> </app-level-panels>
+      <app-level-panels [level]="levels.level2"> </app-level-panels>
+      <app-level-panels [level]="levels.level1"> </app-level-panels>
     </div>
 
-    <app-level-panels [level]="levels.level5"> </app-level-panels>
-    <app-level-panels [level]="levels.level4"> </app-level-panels>
-    <app-level-panels [level]="levels.level3"> </app-level-panels>
-    <app-level-panels [level]="levels.level2"> </app-level-panels>
-    <app-level-panels [level]="levels.level1"> </app-level-panels>
-  </div>
-
-      <div class="row">
+    <div class="row">
       <div class="select-team-header-container">
-      <div class="select-team-header row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-          <div class="float-left">
+        <div class="select-team-header row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+            <div class="float-left">
+            </div>
           </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-          <div class="float-right p-10">
-            <button class="submit-team-button btn btn-success " (click)="submit()">Submit Team</button>
-            <button class="submit-team-button btn btn-danger " (click)="cancel()">Cancel</button>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+            <div class="float-right p-10">
+              <button class="submit-team-button btn btn-success " (click)="submit()">Submit Team</button>
+              <button class="submit-team-button btn btn-danger " (click)="cancel()">Cancel</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  
 
-</div>
+  </div>
+  </div>
 </div>

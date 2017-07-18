@@ -13,47 +13,37 @@
         <a class="navbar-brand" routerLink="/"> GOT Fantasy League </a>
       </div>
 
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav pull-right">
-          <li>
-            <a routerLink="/leaderboard"> 
-              <span class="hidden-xs"> Leader Board  </span> 
-              <span class="visible-xs" data-toggle="collapse" data-target="#navbar"> Leader Board </span>         
-             </a>
-          </li>
-          <li>
-            <a routerLink="/game-play">
-              <span class="hidden-xs"> Gameplay </span> 
-              <span class="visible-xs" data-toggle="collapse" data-target="#navbar"> Gameplay  </span>  
-            </a>
-          </li>
-          <li>
-            <a routerLink="/points-system"> 
-              <span class="hidden-xs"> Points System </span> 
-              <span class="visible-xs" data-toggle="collapse" data-target="#navbar"> Points System  </span>  
-            </a>
-          </li>
-          <li>
-            <a routerLink="/get-started" *ngIf="!isUserLoggedIn">
-              <span class="hidden-xs"> Get Started  </span> 
-              <span class="visible-xs" data-toggle="collapse" data-target="#navbar"> Get Started  </span>  
-            </a>
-          </li>
+  <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav pull-right">
+        <li><a routerLink="/leaderboard"> 
+          <span class="hidden-xs"> Leader Board  </span> 
 
-          <li>
-            <a routerLink="/dashboard" *ngIf="isUserLoggedIn"> 
-              <span class="hidden-xs"> Dashboard </span> 
-              <span class="visible-xs" data-toggle="collapse" data-target="#navbar"> Dashboard </span>  
-            </a>
-          </li>
-          <li class="dropdown" *ngIf="isUserLoggedIn">
-            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Hi {{username}} &nbsp; <img [src]="imageUrl" width="25px" height="25px" alt="User Profile" /> <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a class="logout" (click)="logout()"> Logout </a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+            <span class="visible-xs" data-toggle="collapse" data-target="#navbar"> Leader Board 
+            </span> 
+                      
+             </a>
+        </li>
+        <li><a routerLink="/game-play"> 
+         <span class="hidden-xs"> Gameplay </span> 
+          <span class="visible-xs" data-toggle="collapse" data-target="#navbar"> Gameplay  </span>  </a></li>
+        <li><a routerLink="/points-system"> 
+          <span class="hidden-xs"> Points System </span> 
+          <span class="visible-xs" data-toggle="collapse" data-target="#navbar"> Points System  </span>  </a></li>
+        <li><a routerLink="/get-started" *ngIf="!isUserLoggedIn">
+           <span class="hidden-xs"> Get Started  </span> 
+          <span class="visible-xs" data-toggle="collapse" data-target="#navbar"> Get Started  </span>  </a></li>
+
+
+
+        <li><a routerLink="/dashboard" *ngIf="isUserLoggedIn"> <span data-toggle="collapse" data-target="#navbar"> Dashboard  </span>  </a></li>
+        <li class="dropdown" *ngIf="isUserLoggedIn">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Hi {{username}} &nbsp; <img [src]="imageUrl" width="25px" height="25px" alt="User Profile" /> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a class="logout" (click)="logout()"> Logout </a></li>
+          </ul>
+        </li>
+      </ul>
+  </div>
 
     </div>
   </nav>

@@ -39,8 +39,6 @@ $assetPath : "/assets/images";
     top : 50%;
     right: 20%;
     transform: translate(-20%,-50%);
-
-    
 }
 
 .winter{
@@ -50,20 +48,6 @@ $assetPath : "/assets/images";
 .castle{
     background: url(#{$assetPath}/castle.jpg) no-repeat center; 
     background-size: cover; 
-}
-
-@media(max-width : 34em) {
-    .get-started{      
-    background: url(#{$assetPath}/iron-throne-mobile.jpg) no-repeat center; 
-}
-
-.facebook-login-btn {
-    position: absolute;
-
-    top : 50%;
-    left : 50%;
-    transform: translate(-50%,-50%);
-    }
 }
 
 
@@ -79,4 +63,6 @@ $assetPath : "/assets/images";
         left : 50%;
         transform: translate(-50%,-50%);
     }
-} 
+
+}
+

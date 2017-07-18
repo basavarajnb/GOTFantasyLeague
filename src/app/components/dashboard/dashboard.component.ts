@@ -43,12 +43,12 @@ export class DashboardComponent implements OnInit {
     this.subscription = this.userService.$getUserDetailsSubj().subscribe((user) => {
       if (user) {
         this.user = user;
-        console.log("DASHBOARD USER   ----> ", this.user);
+        
         if (this.user.localSelectedPlayers && this.user.localSelectedPlayers.length > 0) {
           this.isDirty = this.userService.isUserTeamDirty;
           this.selectedPlayers = this.user.localSelectedPlayers;
           this.arePlayersSelected = true;
-          console.log("arePlayersSelected -> ", this.selectedPlayers);
+          
         }
         else {
           this.dialogRef = this.dialog.open(CommonDialogComponent, {
