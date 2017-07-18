@@ -34,6 +34,11 @@ export class AngularFireService {
     getUserObject(id) {
         return this.db.object('/users/' + id);
     }
+
+    getUserById(id) {
+        this.user = this.db.object('/users/' + id);
+        return this.user;
+    }
     setUserObject(id, tempUser) {
         this.db.object('/users/' + id).set(tempUser);
     }
