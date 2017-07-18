@@ -28,7 +28,7 @@ export class AppComponent {
   public isUserLoggedIn = false;
   private username = null;
   private imageUrl = "";
-  
+
   private basePath: string = '/items';
 
   // user: Observable<firebase.User>;
@@ -69,6 +69,13 @@ export class AppComponent {
 
       this.isUserLoggedIn = true;
       this.username = user.name;
+
+      // If User logged by session
+      if (user.imageUrl) {
+        this.imageUrl = user.imageUrl;
+      }
+
+      // If User logged from Facebook
       if (user.picture && user.picture.data && user.picture.data.url) {
         this.imageUrl = user.picture.data.url;
       }
