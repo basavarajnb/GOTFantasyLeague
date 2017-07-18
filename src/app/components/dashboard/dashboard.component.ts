@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
   message = "You cannot enter the team now!";
 
   private subscription;
+  private dialogRef: MdDialogRef<CommonDialogComponent>;
 
 
   selectedPlayersNames = [
@@ -50,7 +51,7 @@ export class DashboardComponent implements OnInit {
           
         }
         else {
-          let dialogRef = this.dialog.open(CommonDialogComponent, {
+          this.dialogRef = this.dialog.open(CommonDialogComponent, {
             data: "Add Players and SAVE TEAM after adding players.",
           });
         }
@@ -62,6 +63,9 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnDestroy() {
+    if (this.dialogRef) {
+      this.dialogRef.close();
+    }
     this.subscription.unsubscribe();
   }
 }
