@@ -24,7 +24,7 @@ export class SessionService {
         // gotfantasyleague - 1593925954014511
         
         let initParams: InitParams = {
-            appId: '455075384862999',
+            appId: '1593925954014511',
             xfbml: true,
             version: 'v2.8'
         };
@@ -68,7 +68,6 @@ export class SessionService {
                 tempUser.rank = user.rank ? user.rank : 0;
                 tempUser.points = user.points ? user.points : 0;
                 this.loggedIn(tempUser);
-                console.log("user  ->>>>>>>>>>>>>>>>>", tempUser);
             });
             // this.fbLogIn();
         }
