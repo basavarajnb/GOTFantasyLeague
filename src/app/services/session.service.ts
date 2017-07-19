@@ -60,6 +60,7 @@ export class SessionService {
             let userObs = this.angularFireService.getUserById(userID);
             userObs.subscribe((user) => {
                 let tempUser: any = {};
+                tempUser.id = user.id ? user.id : userID;
                 tempUser.name = user.name ? user.name : "Anonymous";
                 tempUser.email = user.email ? user.email : "";
                 tempUser.gender = user.gender ? user.gender : "";
@@ -84,6 +85,8 @@ export class SessionService {
             .then((response) => {
                 let userID = response.authResponse.userID;
                 this.fb.api('/me?fields=id,name,first_name,gender,email,picture').then((user) => {
+                    console.log("Logged In User -> ", user);
+                    user.id = userID;
                     this.loggedIn(user);
                 });
             })
