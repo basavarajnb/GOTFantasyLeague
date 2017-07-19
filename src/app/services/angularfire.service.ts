@@ -48,6 +48,7 @@ export class AngularFireService {
         this.user.subscribe((response) => {
             if (response.$exists() === false) {
                 let tempUser: any = {};
+                tempUser.id = user.id;
                 tempUser.name = user.name ? user.name : "Anonymous";
                 tempUser.email = user.email ? user.email : "";
                 tempUser.gender = user.gender ? user.gender : "";
