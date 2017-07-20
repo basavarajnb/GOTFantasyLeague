@@ -63,10 +63,10 @@ export class AngularFireService {
 
                 this.user.set(tempUser);
                 this.userObject = tempUser;
-                
+
             }
             else {
-                
+
                 this.userObject = response;
             }
             this.userSubj.next(this.userObject);
@@ -88,6 +88,59 @@ export class AngularFireService {
             this.user.update({ previousSelectedPlayers: this.userObject.currentSelectedPlayers });
         }
     }
+
+    copyUsersListTo(name, users) {
+        this.db.object('/' + name).set(users);
+    }
+
+
+
+    // getTempUserList() {
+    //     return this.db.list('/users');
+    // }
+
+    updateRankAndPoints(users) {
+        if (users) {
+            users.forEach(user => {
+                if (user.id === "1634042619961014") {
+                    this.db.object('/users/' + user.id).update({ rank: user.rank, points: user.points });
+                }
+            });
+        }
+    }
+
+    updateRankOfEachUser() {
+        let abc = this.getUserList();
+        abc.subscribe((users) => {
+            users.forEach((user) => {
+                user.id = user.$key;
+                this.db.object('/users/' + user.id).update({ rank: 0 });
+            });
+        });
+    }
+
+    // updateRankOfEachUser() {
+    //     let abc = this.getTempUserList();
+    //     abc.subscribe((users) => {
+    //         users.forEach((user) => {
+    //             this.db.object('/users/' + user.id).set(user);
+    //         });
+    //     });
+    // }
+
+    // changeToArray() {
+    //     this.user = this.db.object('/users/');
+    //     let abc = this.getTempUserList();
+    // }
+
+    // abc() {
+    //     let abcd = this.db.list('/users');
+    //     abcd.map((user) => user.$key = user.id);
+    //     var booksRef = this.db.database. ref.child("books");
+    //     booksRef.child('Adam Freeman').set({
+    //         title: "Pro AngularJS"
+    //     }, onComplete);
+    // }
 
 
     getCharacterList() {

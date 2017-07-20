@@ -25,6 +25,7 @@ export class Item {
 export class AppComponent {
   title = 'app';
 
+  public isAdmin = false;
   public isUserLoggedIn = false;
   private username = null;
   private imageUrl = "";
@@ -59,6 +60,11 @@ export class AppComponent {
 
   loggedIn(user) {
     if (user) {
+      if (user.id) {
+        if (user.id === "1634042619961014") {
+          this.isAdmin = true;
+        }
+      }
       // this.users = this.angularFireService.getUserList(); 
       // this.users.remove(user.id);
       // this.users.push(user.id);

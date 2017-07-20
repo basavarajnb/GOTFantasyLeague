@@ -1,0 +1,70 @@
+<div class="admin-home">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <h2>List of users</h2>
+        <div>
+          <button type="" (click)="updateRanks()">Update Rank</button>
+        </div>
+
+
+        <div class="users-list">
+          <div class="table-container">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>ID</th>
+                  <th>User Name</th>
+                  <th>Rank</th>
+                  <th>Points</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of usersList; let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{user?.id}}</td>
+                  <td>{{user?.name}}</td>
+                  <td>{{user?.rank}}</td>
+                  <td>{{user?.points}}</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-xs-6">
+        <h2>List of users</h2>
+
+
+        <div class="users-list">
+          <div class="table-container">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>ID</th>
+                  <th>User Name</th>
+                  <th>Points</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of charactersList; let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{user?.id}}</td>
+                  <td>{{user?.name}}</td>
+                  <td>{{user?.totalPoints}}</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
