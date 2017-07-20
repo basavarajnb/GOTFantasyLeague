@@ -102,12 +102,21 @@ export class AngularFireService {
     updateRankAndPoints(users) {
         if (users) {
             users.forEach(user => {
-                if (user.id === "1634042619961014") {
+                if (user.id) {
                     this.db.object('/users/' + user.id).update({ rank: user.rank, points: user.points });
                 }
             });
         }
     }
+
+    saveEpisodeData(currentEpisodeName, currentEpisode) {
+        return this.db.object('/episodes/' + currentEpisodeName).update(currentEpisode);
+    }
+
+    getEpisodeData(currentEpisode) {
+        return this.db.object('/episodes/' + currentEpisode);
+    }
+
 
     updateRankOfEachUser() {
         let abc = this.getUserList();

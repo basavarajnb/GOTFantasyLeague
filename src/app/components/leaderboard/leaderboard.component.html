@@ -3,7 +3,67 @@
     <div class="row leaders">
       <h1 class="title text-center"> Leaderboard </h1>
 
-      <h3 class="text-center"> The king for the week will be crowned soon. Keep your fingers crossed.  </h3>
+      <div class="container w-100">
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" class="tab-header-text active" href="#users-rank-list">Users</a></li>
+          <li><a data-toggle="tab" class="tab-header-text" href="#characters-rank-list">Characters</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="users-rank-list" class="tab-pane fade in active">
+            <div class="container w-100">
+              <div class="users-list">
+                <div class="table-container">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>User Name</th>
+                        <th>Rank</th>
+                        <th>Points</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let user of usersList; let i = index" [class.current-user]="user.id === currentUser.id">
+                        <td>{{i+1}}</td>
+                        <td>{{user?.name}}</td>
+                        <td>{{user?.rank}}</td>
+                        <td>{{user?.points}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div id="characters-rank-list" class="tab-pane fade">
+            <div class="container w-100">
+              <div class="characters-list">
+                <div class="table-container">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Character Name</th>
+                        <th>Points</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let character of charactersList; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{character?.name}}</td>
+                        <td>{{character?.totalPoints}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
     </div>
   </div>
 </div>

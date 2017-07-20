@@ -1,5 +1,4 @@
 .leaderboard{
-    height: 100%;
     background: #333;
 }
 
@@ -12,4 +11,49 @@
 
 .title{
     color : #333;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.nav-tabs > li {
+    width: 50%;
+    text-align: center;
+}
+
+.nav-tabs > li > a {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    border-color: #eee #eee #ddd;
+    background-color: #eee;
+}
+
+
+.nav-tabs > li.active > a {
+    background-color: #555;
+    color: #fff;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.tab-header-text {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: inherit;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+    text-align: center;
+}
+
+
+// Table
+.table>thead>tr>th {
+    border-bottom: 2px solid #333;
+}
+
+.current-user {
+    background-color: #ddd;
 }

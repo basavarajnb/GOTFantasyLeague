@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { FacebookService, InitParams, LoginOptions } from 'ngx-facebook';
 import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
@@ -55,6 +55,13 @@ export class AppComponent {
       else {
         this.isUserLoggedIn = false;
       }
+    });
+
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0)
     });
   }
 
