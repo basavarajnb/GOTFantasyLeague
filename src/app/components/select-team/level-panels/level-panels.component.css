@@ -1,13 +1,13 @@
 .collapse-header {
-    font-size: 1.5em;
-    vertical-align: bottom;
+    font-size: 1.2em;
+    vertical-align: super;
 }
 .inline-block {
     display: inline-block;
 }
 
 .selected-players span.selected-text {
-    color: #FFF;
+    color: #333;
     font-size: 20;
     margin: 10;
     padding: 5;
@@ -60,7 +60,7 @@
 
 @media (max-width: 500px) {
   .player-card {
-    height: 240px;
+    height: 220px;
   }
 }
 
