@@ -32,8 +32,8 @@ class PointsSystem {
 })
 export class AdminHomeComponent implements OnInit, OnDestroy {
 
-  private usersList: Array<any>;
-  private charactersList;
+  usersList: Array<any>;
+  charactersList;
   private subscriptions;
   private currentEpisodeName = "episode1";
   private currentEpisode: Episode = new Episode();
