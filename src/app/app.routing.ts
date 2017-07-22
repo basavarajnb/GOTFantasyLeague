@@ -9,6 +9,7 @@ import { AuthService } from "app/services/auth.service";
 import { DashboardComponent } from "app/components/dashboard/dashboard.component";
 import { SelectTeamComponent } from "app/components/select-team/select-team.component";
 import { PointsSystemComponent } from "app/components/points-system/points-system.component";
+import { AdminHomeComponent } from "app/admin/admin-home/admin-home.component";
 
 const appRoutes: Routes = [
   {
@@ -69,7 +70,7 @@ const appRoutes: Routes = [
     },
 
   },
-    {
+  {
     path: 'points-system',
     component: PointsSystemComponent,
     data: {
@@ -87,8 +88,16 @@ const appRoutes: Routes = [
       metaKeywords: '',
       metaDesc: ''
     }
+  },
+  {
+    path: 'admin',
+    component: AdminHomeComponent,
+    data: {
+      title: 'GOT Fantasy League | Admin',
+      metaKeywords: '',
+      metaDesc: ''
+    }
   }
-
 ];
 // {}
 

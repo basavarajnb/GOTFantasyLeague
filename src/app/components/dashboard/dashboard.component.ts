@@ -65,6 +65,7 @@ export class DashboardComponent implements OnInit {
   ngOnDestroy() {
     if (this.dialogRef) {
       this.dialogRef.close();
+      this.dialog.closeAll();
     }
     this.subscription.unsubscribe();
   }

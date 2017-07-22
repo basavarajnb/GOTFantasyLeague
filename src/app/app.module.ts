@@ -34,6 +34,7 @@ import { AngularFireService } from "app/services/angularfire.service";
 import { CharacterService } from "app/services/character.service";
 import { NewUserDialogComponent } from './controls/dialogs/new-user-dialog/new-user-dialog.component';
 import { CommonDialogComponent } from './controls/dialogs/common-dialog/common-dialog.component';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCctnc06-6uMKboihVzKOowBd7gpy1-TW0",
@@ -62,7 +63,8 @@ export const firebaseConfig = {
     LevelPanelsComponent,
     UserTeamComponent,
     NewUserDialogComponent,
-    CommonDialogComponent
+    CommonDialogComponent,
+    AdminHomeComponent
   ],
   entryComponents: [
     NewUserDialogComponent,

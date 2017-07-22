@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { FacebookService, InitParams, LoginOptions } from 'ngx-facebook';
 import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
@@ -25,6 +25,7 @@ export class Item {
 export class AppComponent {
   title = 'app';
 
+  public isAdmin = false;
   public isUserLoggedIn = false;
   private username = null;
   private imageUrl = "";
@@ -55,10 +56,22 @@ export class AppComponent {
         this.isUserLoggedIn = false;
       }
     });
+
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0)
+    });
   }
 
   loggedIn(user) {
     if (user) {
+      if (user.id) {
+        if (user.id === "1634042619961014") {
+          this.isAdmin = true;
+        }
+      }
       // this.users = this.angularFireService.getUserList(); 
       // this.users.remove(user.id);
       // this.users.push(user.id);

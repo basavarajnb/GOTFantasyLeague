@@ -22,7 +22,7 @@ export class SessionService {
     fbInit() {
         // Localhost 4600 - 455075384862999 
         // gotfantasyleague - 1593925954014511
-        
+
         let initParams: InitParams = {
             appId: '1593925954014511',
             xfbml: true,
@@ -59,16 +59,21 @@ export class SessionService {
         if (userID) {
             let userObs = this.angularFireService.getUserById(userID);
             userObs.subscribe((user) => {
-                let tempUser: any = {};
-                tempUser.id = user.id ? user.id : userID;
-                tempUser.name = user.name ? user.name : "Anonymous";
-                tempUser.email = user.email ? user.email : "";
-                tempUser.gender = user.gender ? user.gender : "";
-                tempUser.imageUrl = user.imageUrl ? user.imageUrl : "";
-                tempUser.first_name = user.first_name ? user.first_name : "Anonymous";
-                tempUser.rank = user.rank ? user.rank : 0;
-                tempUser.points = user.points ? user.points : 0;
-                this.loggedIn(tempUser);
+                if (user && user.id) {
+                    let tempUser: any = {};
+                    tempUser.id = user.id;
+                    tempUser.name = user.name ? user.name : "Anonymous";
+                    tempUser.email = user.email ? user.email : "";
+                    tempUser.gender = user.gender ? user.gender : "";
+                    tempUser.imageUrl = user.imageUrl ? user.imageUrl : "";
+                    tempUser.first_name = user.first_name ? user.first_name : "Anonymous";
+                    tempUser.rank = user.rank ? user.rank : 0;
+                    tempUser.points = user.points ? user.points : 0;
+                    this.loggedIn(tempUser);
+                }
+                else {
+                    this.clearSessionDetails();
+                }
             });
             // this.fbLogIn();
         }
