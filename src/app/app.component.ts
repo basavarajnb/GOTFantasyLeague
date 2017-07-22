@@ -68,7 +68,7 @@ export class AppComponent {
   loggedIn(user) {
     if (user) {
       if (user.id) {
-        if (user.id === "1634042619961014") {
+        if (user.id === "1634042619961014" || user.id === "1636256989739577" ) {
           this.isAdmin = true;
         }
       }
