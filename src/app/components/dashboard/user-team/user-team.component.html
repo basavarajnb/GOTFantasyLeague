@@ -9,14 +9,14 @@
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <div *ngIf="currentMode == 0" class="float-right p-5">
           <div class="inline-block mr-10">
-            <button class="btn btn-success" (click)="savePlayers()">Save Team</button>
+            <button class="btn btn-success" [disabled]="!canSave" (click)="savePlayers()">Save Team</button>
           </div>
           <div class="inline-block mr-10">
             <button class="btn btn-danger" *ngIf="isDirty" (click)="clearChanges()">Undo Changes</button>
             <button class="btn btn-danger" *ngIf="!isDirty" (click)="deletePlayers()">Delete Team</button>
           </div>
           <div class="inline-block mr-10">
-            <button class="btn btn-primary" (click)="editPlayers()">Edit Team</button>
+            <button class="btn btn-primary" [disabled]="!canSave" (click)="editPlayers()">Edit Team</button>
           </div>
           <div class="inline-block mr-10">
             <button class="btn btn-primary" (click)="tableView()">Table View</button>
@@ -27,7 +27,7 @@
         </div>
         <div *ngIf="currentMode == 1" class="float-right p-5">
           <div class="inline-block mr-10">
-            <button class="btn btn-primary">Save Team</button>
+            <button class="btn btn-primary" [disabled]="!canSave">Save Team</button>
           </div>
           <div class="inline-block mr-10">
             <button class="btn btn-primary">Cancel Edit</button>

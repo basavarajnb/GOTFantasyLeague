@@ -30,6 +30,8 @@ export class UserTeamComponent implements OnInit {
   private userTeamPlayers = [];
   public currentMode = TeamMode.add;
 
+  public canSave = true;
+
   private kingOrQueen = {};
   private theHand = {};
   private otherPlayers = [];
@@ -74,6 +76,13 @@ export class UserTeamComponent implements OnInit {
 
 
   ngOnInit() {
+    var d = new Date('2017-07-24T02:00:00Z'); // Fetch this from DB   2017-07-24T02:00:00Z
+    if (d > new Date()) {
+      this.canSave = true;
+    }
+    else {
+      this.canSave = false;
+    }
   }
 
   addPlayers() {
