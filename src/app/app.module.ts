@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdDialogModule, MdButtonModule } from '@angular/material';
+import { MdDialogModule, MdButtonModule, MdSelectModule, MD_PLACEHOLDER_GLOBAL_OPTIONS } from '@angular/material';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -35,6 +36,7 @@ import { CharacterService } from "app/services/character.service";
 import { NewUserDialogComponent } from './controls/dialogs/new-user-dialog/new-user-dialog.component';
 import { CommonDialogComponent } from './controls/dialogs/common-dialog/common-dialog.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { EpisodeService } from "app/services/episode.service";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCctnc06-6uMKboihVzKOowBd7gpy1-TW0",
@@ -72,6 +74,7 @@ export const firebaseConfig = {
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     routing,
     FacebookModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
@@ -80,10 +83,13 @@ export const firebaseConfig = {
     BrowserAnimationsModule,
     MdDialogModule,
     MdButtonModule,
+    MdSelectModule
   ],
   providers: [AuthService, SessionService, UserService, PlayerService, AngularFireService,
     CharacterService, Location,
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    EpisodeService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: MD_PLACEHOLDER_GLOBAL_OPTIONS, useValue: { float: 'auto' } }
   ],
   bootstrap: [AppComponent]
 })

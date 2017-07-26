@@ -4,6 +4,7 @@ import { AngularFireService } from "app/services/angularfire.service";
 import { UserService } from "app/services/user.service";
 import { CommonDialogComponent } from "app/controls/dialogs/common-dialog/common-dialog.component";
 import { MdDialog } from "@angular/material";
+import { EpisodeService } from "app/services/episode.service";
 
 export enum TeamMode {
   view,
@@ -40,7 +41,8 @@ export class UserTeamComponent implements OnInit {
 
   constructor(private router: Router,
     private userService: UserService,
-    public dialog: MdDialog) { }
+    public dialog: MdDialog,
+    private episodeService: EpisodeService) { }
 
   tableView() {
     this.currentView = "table";
@@ -66,23 +68,20 @@ export class UserTeamComponent implements OnInit {
   }
 
 
-  // selectedPlayersNames = [
-  //   "Jon Snow",
-  //   "Cersi Lan",
-  //   "D Kalisi",
-  //   "Arya",
-  //   "Auron Greyjoy"
-  // ];
-
-
   ngOnInit() {
-    var d = new Date('2017-07-24T02:00:00Z'); // Fetch this from DB   2017-07-24T02:00:00Z
-    if (d > new Date()) {
-      this.canSave = true;
-    }
-    else {
-      this.canSave = false;
-    }
+    this.episodeService.$getDisableSaveSubj().subscribe((disableSave) => {
+      this.canSave = !disableSave;
+    });
+    // this.episodeService.$getCurrentEpisodeSubj().subscribe((currentEpisode) => {
+    //   let blockSaveDate = currentEpisode
+    //   let d = new Date('2017-07-24T02:00:00Z'); // Fetch this from DB   2017-07-24T02:00:00Z
+    //   if (d > new Date()) {
+    //     this.canSave = true;
+    //   }
+    //   else {
+    //     this.canSave = false;
+    //   }
+    // });
   }
 
   addPlayers() {
