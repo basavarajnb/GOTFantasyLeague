@@ -30,18 +30,49 @@
 
       </div>
     </div>
-    <div class="note-container ">
-      <div class="">
-        <!-- Note: Your Rank and Points will be updated soon. Please be patient. Thank you for your cooperation. -->
-      </div>
-    </div>
 
     <div class="board-container">
 
       <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6">
+
+        <div class="col-sm-12 col-md-4 col-lg-4">
           <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="panel panel-sky-blue">
+                <div class="panel-heading">
+                  <div class="row">
+                    <div class="col-xs-3">
+                      <i class="fa fa-trophy fa-7x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                      <div class="huge">{{user?.totalPoints}}</div>
+                      <div class="fs-16">Total Points!</div>
+                    </div>
+                  </div>
+                </div>
+                <a>
+                  <div class="panel-footer">
+                    <div class="height-20">
+                      <span class="pull-left">Previous Week's Total Points</span>
+                      <span class="pull-right">0</span>
+                    </div>
+                    <div class="height-20">
+                      <span class="pull-left">Difference</span>
+                      <span class="pull-right">0</span>
+                    </div>
+
+                    <div class="clearfix"></div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-sm-12 col-md-4 col-lg-4">
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
               <div class="panel panel-primary">
                 <div class="panel-heading">
                   <div class="row">
@@ -50,7 +81,7 @@
                     </div>
                     <div class="col-xs-9 text-right">
                       <div class="huge">{{user?.rank}}</div>
-                      <div class="fs-18">Rank!</div>
+                      <div class="fs-16">Rank for the Week!</div>
                     </div>
                   </div>
                 </div>
@@ -73,9 +104,9 @@
           </div>
         </div>
 
-        <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="col-sm-12 col-md-4 col-lg-4">
           <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-10 col-md-offset-1">
               <div class="panel panel-green">
                 <div class="panel-heading">
                   <div class="row">
@@ -84,7 +115,7 @@
                     </div>
                     <div class="col-xs-9 text-right">
                       <div class="huge">{{user?.points}}</div>
-                      <div class="fs-18">Points!</div>
+                      <div class="fs-16">Points for the Week!</div>
                     </div>
                   </div>
                 </div>

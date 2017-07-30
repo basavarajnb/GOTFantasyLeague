@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireService } from "app/services/angularfire.service";
 import { UserService } from "app/services/user.service";
+import { EpisodeService, Episode, EpisodesSettings } from "app/services/episode.service";
 
-class Episode {
+class EpisodePoints {
   characterPoints: Array<any>;
   userPoints: Array<any>;
 }
@@ -16,10 +17,13 @@ export class LeaderboardComponent implements OnInit {
   charactersList;
   usersList;
   currentUser;
-  currentEpisode = "episode1";
+  episodesSettings: EpisodesSettings;
+  episodeList: Array<Episode> = [];
+  currentEpisodeId: string;
 
   constructor(private angularFireService: AngularFireService,
-    private userService: UserService) { }
+    private userService: UserService,
+    private episodeService: EpisodeService) { }
 
   ngOnInit() {
 
@@ -27,10 +31,34 @@ export class LeaderboardComponent implements OnInit {
       this.currentUser = this.userService.user;
     });
 
-    this.angularFireService.getEpisodeData(this.currentEpisode).subscribe((episodeData: Episode) => {
-      this.charactersList = episodeData.characterPoints;
-      this.usersList = episodeData.userPoints;
+    this.episodeService.$getEpisodesSettingsSubj().subscribe((episodesSettings) => {
+      if (episodesSettings) {
+        this.episodesSettings = episodesSettings;
+        this.episodeList = this.episodesSettings.episodes;
+        this.currentEpisodeId = this.episodesSettings.currentEpisode.id;
 
+        this.getCurrentEpisodeData(this.currentEpisodeId);
+      }
+    });
+  }
+
+  episodeChanged($event) {
+    console.log("event", $event);
+    if ($event) {
+      this.getCurrentEpisodeData($event.value)
+    }
+  }
+
+  getCurrentEpisodeData(currentEpisodeId) {
+    this.angularFireService.getEpisodeData(currentEpisodeId).subscribe((episodeData: EpisodePoints) => {
+      if (episodeData && episodeData.characterPoints && episodeData.userPoints) {
+        this.charactersList = episodeData.characterPoints;
+        this.usersList = episodeData.userPoints;
+      }
+      else {
+        this.charactersList = [];
+        this.usersList = [];
+      }
     });
   }
 }

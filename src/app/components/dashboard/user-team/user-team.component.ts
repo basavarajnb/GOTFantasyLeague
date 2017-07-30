@@ -4,6 +4,7 @@ import { AngularFireService } from "app/services/angularfire.service";
 import { UserService } from "app/services/user.service";
 import { CommonDialogComponent } from "app/controls/dialogs/common-dialog/common-dialog.component";
 import { MdDialog } from "@angular/material";
+import { EpisodeService } from "app/services/episode.service";
 
 export enum TeamMode {
   view,
@@ -26,9 +27,14 @@ export class UserTeamComponent implements OnInit {
 
   @Input() isDirty: boolean;
 
+  userMessage = "Note: Your Rank and Points are up to date.";
+  showNote = true;
+
 
   private userTeamPlayers = [];
   public currentMode = TeamMode.add;
+
+  public canSave = true;
 
   private kingOrQueen = {};
   private theHand = {};
@@ -38,7 +44,8 @@ export class UserTeamComponent implements OnInit {
 
   constructor(private router: Router,
     private userService: UserService,
-    public dialog: MdDialog) { }
+    public dialog: MdDialog,
+    private episodeService: EpisodeService) { }
 
   tableView() {
     this.currentView = "table";
@@ -64,16 +71,26 @@ export class UserTeamComponent implements OnInit {
   }
 
 
-  // selectedPlayersNames = [
-  //   "Jon Snow",
-  //   "Cersi Lan",
-  //   "D Kalisi",
-  //   "Arya",
-  //   "Auron Greyjoy"
-  // ];
-
-
   ngOnInit() {
+    this.episodeService.$getDisableSaveSubj().subscribe((disableSave) => {
+      this.canSave = !disableSave;
+      if (!this.canSave) {
+        this.userMessage = "Note: You can not Save or Edit team after the show airs. You can Save or Edit team after the points are assigned for current episode.";
+      }
+      else {
+        this.userMessage = "Note: Your Rank and Points are up to date.";
+      }
+    });
+    // this.episodeService.$getCurrentEpisodeSubj().subscribe((currentEpisode) => {
+    //   let blockSaveDate = currentEpisode
+    //   let d = new Date('2017-07-24T02:00:00Z'); // Fetch this from DB   2017-07-24T02:00:00Z
+    //   if (d > new Date()) {
+    //     this.canSave = true;
+    //   }
+    //   else {
+    //     this.canSave = false;
+    //   }
+    // });
   }
 
   addPlayers() {
@@ -85,18 +102,24 @@ export class UserTeamComponent implements OnInit {
   }
 
   savePlayers() {
-    this.userService.updateUserTeam(this.userTeamPlayers).then(() => {
-      let dialogRef = this.dialog.open(CommonDialogComponent, {
-        data: "Team is Saved Successfully.",
-      });
-      this.isDirty = false;
-      this.userService.isUserTeamDirty = false;
-    })
-      .catch(() => {
+    this.canSave = !this.episodeService.getDisableSave();
+    if (this.canSave) {
+      this.userService.updateUserTeam(this.userTeamPlayers).then(() => {
         let dialogRef = this.dialog.open(CommonDialogComponent, {
-          data: "Error occurred while saving the Team.",
+          data: "Team is Saved Successfully.",
         });
-      });
+        this.isDirty = false;
+        this.userService.isUserTeamDirty = false;
+      })
+        .catch(() => {
+          let dialogRef = this.dialog.open(CommonDialogComponent, {
+            data: "Error occurred while saving the Team.",
+          });
+        });
+    }
+    else {
+      this.userMessage = "Note: You can not Save or Edit team after the show airs. You can Save or Edit team after the points are assigned for current episode.";
+    }
   }
 
   deletePlayers() {

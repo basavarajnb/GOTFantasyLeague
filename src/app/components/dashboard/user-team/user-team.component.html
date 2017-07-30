@@ -1,3 +1,8 @@
+<div class="note-container" *ngIf="showNote">
+  <div class="">
+    {{userMessage}}
+  </div>
+</div>
 <div class="team-player-container">
   <div class="team-player-container-header ">
     <div class="row">
@@ -9,14 +14,14 @@
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <div *ngIf="currentMode == 0" class="float-right p-5">
           <div class="inline-block mr-10">
-            <button class="btn btn-success" (click)="savePlayers()">Save Team</button>
+            <button class="btn btn-success" [disabled]="!canSave" (click)="savePlayers()" angulartics2On="click" angularticsEvent="SaveButtonClick" angularticsCategory="SaveButtonClick" [angularticsProperties]="{label: 'Save Button Click'}">Save Team</button>
           </div>
           <div class="inline-block mr-10">
-            <button class="btn btn-danger" *ngIf="isDirty" (click)="clearChanges()">Undo Changes</button>
-            <button class="btn btn-danger" *ngIf="!isDirty" (click)="deletePlayers()">Delete Team</button>
+            <button class="btn btn-danger" *ngIf="isDirty" (click)="clearChanges()" angulartics2On="click" angularticsEvent="UndoChangesButtonClick" angularticsCategory="UndoChangesButtonClick" [angularticsProperties]="{label: 'Undo Changes Button Click'}">Undo Changes</button>
+            <button class="btn btn-danger" *ngIf="!isDirty" (click)="deletePlayers()" angulartics2On="click" angularticsEvent="DeleteButtonClick" angularticsCategory="DeleteButtonClick" [angularticsProperties]="{label: 'Delete Button Click'}">Delete Team</button>
           </div>
           <div class="inline-block mr-10">
-            <button class="btn btn-primary" (click)="editPlayers()">Edit Team</button>
+            <button class="btn btn-primary" [disabled]="!canSave" (click)="editPlayers()" angulartics2On="click" angularticsEvent="EditButtonClick" angularticsCategory="EditButtonClick" [angularticsProperties]="{label: 'Edit Button Click'}">Edit Team</button>
           </div>
           <div class="inline-block mr-10">
             <button class="btn btn-primary" (click)="tableView()">Table View</button>
@@ -27,7 +32,7 @@
         </div>
         <div *ngIf="currentMode == 1" class="float-right p-5">
           <div class="inline-block mr-10">
-            <button class="btn btn-primary">Save Team</button>
+            <button class="btn btn-primary" [disabled]="!canSave" angulartics2On="click" angularticsEvent="SaveButtonClick" angularticsCategory="SaveButtonClick" [angularticsProperties]="{label: 'Save Button Click'}">Save Team</button>
           </div>
           <div class="inline-block mr-10">
             <button class="btn btn-primary">Cancel Edit</button>
@@ -35,7 +40,7 @@
         </div>
         <div *ngIf="currentMode == 2" class="float-right p-5">
           <div class="inline-block mr-10">
-            <button class="btn btn-primary" (click)="addPlayers()">Add Players</button>
+            <button class="btn btn-primary" (click)="addPlayers()" angulartics2On="click" angularticsEvent="AddPlayersButtonClick" angularticsCategory="AddPlayersButtonClick" [angularticsProperties]="{label: 'Add Players Button Click'}">Add Players</button>
           </div>
         </div>
       </div>
