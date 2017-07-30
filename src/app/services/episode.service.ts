@@ -19,7 +19,7 @@ export class Episode {
 export class EpisodesSettings {
     episodes: Array<Episode>;
     currentEpisode: Episode;
-    disableSave: boolean;
+    disableDateTime: string;
 }
 
 @Injectable()
@@ -27,6 +27,7 @@ export class EpisodeService {
     currentEpisode: Episode;
     disableSave: boolean;
     episodesSettings: EpisodesSettings;
+    disableSaveDate: Date;
 
     disableSaveSubj = new BehaviorSubject<boolean>(false);
     currentEpisodeSubj = new BehaviorSubject<Episode>(undefined);
@@ -39,8 +40,17 @@ export class EpisodeService {
     }
     setEpisodeSettings(episodesSettings: EpisodesSettings) {
         if (episodesSettings && episodesSettings.episodes && episodesSettings.episodes.length > 0) {
-            this.disableSave = episodesSettings.disableSave;
-            this.disableSaveSubj.next(episodesSettings.disableSave);
+            this.disableSave = false;
+            if (episodesSettings.disableDateTime) {
+                this.disableSaveDate = new Date(episodesSettings.disableDateTime); // '2017-07-24T02:00:00Z' Fetch this from DB   2017-07-24T02:00:00Z
+                if (this.disableSaveDate > new Date()) {
+                    this.disableSave = false;
+                }
+                else {
+                    this.disableSave = true;
+                }
+            }
+            this.disableSaveSubj.next(this.disableSave);
             this.episodesSettings = episodesSettings;
             this.episodesSettingsSubj.next(this.episodesSettings);
             this.currentEpisodeSubj.next(this.episodesSettings.currentEpisode);
@@ -48,6 +58,14 @@ export class EpisodeService {
     }
 
     getDisableSave() {
+        if (this.disableSaveDate) {
+            if (this.disableSaveDate > new Date()) {
+                this.disableSave = false;
+            }
+            else {
+                this.disableSave = true;
+            }
+        }
         return this.disableSave;
     }
 
@@ -84,7 +102,6 @@ export class EpisodeService {
     addEpisodesSettingsTEMP() {
         this.episodesSettingsTEMP.episodes = this.episodesTemp;
         this.episodesSettingsTEMP.currentEpisode = this.episodesTemp[2];
-        this.episodesSettingsTEMP.disableSave = false;
 
         this.angularFireService.setEpisodesSettings(this.episodesSettingsTEMP);
     }

@@ -27,6 +27,9 @@ export class UserTeamComponent implements OnInit {
 
   @Input() isDirty: boolean;
 
+  userMessage = "Note: Your Rank and Points are up to date.";
+  showNote = true;
+
 
   private userTeamPlayers = [];
   public currentMode = TeamMode.add;
@@ -71,6 +74,12 @@ export class UserTeamComponent implements OnInit {
   ngOnInit() {
     this.episodeService.$getDisableSaveSubj().subscribe((disableSave) => {
       this.canSave = !disableSave;
+      if (!this.canSave) {
+        this.userMessage = "Note: You can not Save or Edit team after the show airs. You can Save or Edit team after the points are assigned for current episode.";
+      }
+      else {
+        this.userMessage = "Note: Your Rank and Points are up to date.";
+      }
     });
     // this.episodeService.$getCurrentEpisodeSubj().subscribe((currentEpisode) => {
     //   let blockSaveDate = currentEpisode
@@ -93,18 +102,24 @@ export class UserTeamComponent implements OnInit {
   }
 
   savePlayers() {
-    this.userService.updateUserTeam(this.userTeamPlayers).then(() => {
-      let dialogRef = this.dialog.open(CommonDialogComponent, {
-        data: "Team is Saved Successfully.",
-      });
-      this.isDirty = false;
-      this.userService.isUserTeamDirty = false;
-    })
-      .catch(() => {
+    this.canSave = !this.episodeService.getDisableSave();
+    if (this.canSave) {
+      this.userService.updateUserTeam(this.userTeamPlayers).then(() => {
         let dialogRef = this.dialog.open(CommonDialogComponent, {
-          data: "Error occurred while saving the Team.",
+          data: "Team is Saved Successfully.",
         });
-      });
+        this.isDirty = false;
+        this.userService.isUserTeamDirty = false;
+      })
+        .catch(() => {
+          let dialogRef = this.dialog.open(CommonDialogComponent, {
+            data: "Error occurred while saving the Team.",
+          });
+        });
+    }
+    else {
+      this.userMessage = "Note: You can not Save or Edit team after the show airs. You can Save or Edit team after the points are assigned for current episode.";
+    }
   }
 
   deletePlayers() {

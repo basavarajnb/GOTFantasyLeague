@@ -11,7 +11,7 @@
           </div>
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
             <div class="float-right p-10">
-              <button class="submit-team-button btn btn-success " (click)="submit()">Submit Team</button>
+              <button class="submit-team-button btn btn-success " (click)="submit()" angulartics2On="click" angularticsEvent="SubmitTeamButtonClick" angularticsCategory="SubmitTeamButtonClick" [angularticsProperties]="{label: 'Submit Team Button Click'}">Submit Team</button>
               <button class="submit-team-button btn btn-danger " (click)="cancel()">Cancel</button>
             </div>
           </div>

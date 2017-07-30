@@ -38,6 +38,8 @@ import { CommonDialogComponent } from './controls/dialogs/common-dialog/common-d
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { EpisodeService } from "app/services/episode.service";
 
+import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
+
 export const firebaseConfig = {
   apiKey: "AIzaSyCctnc06-6uMKboihVzKOowBd7gpy1-TW0",
   authDomain: "gotfantasyleague-19332.firebaseapp.com",
@@ -83,7 +85,8 @@ export const firebaseConfig = {
     BrowserAnimationsModule,
     MdDialogModule,
     MdButtonModule,
-    MdSelectModule
+    MdSelectModule,
+    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ])
   ],
   providers: [AuthService, SessionService, UserService, PlayerService, AngularFireService,
     CharacterService, Location,

@@ -8,7 +8,7 @@ import * as firebase from 'firebase/app';
 import { SessionService } from "app/services/session.service";
 import { AngularFireService } from "app/services/angularfire.service";
 import { CharacterService } from "app/services/character.service";
-
+import { Angulartics2GoogleAnalytics } from 'angulartics2';
 export class Item {
   $key: string;
   title: string;
@@ -42,7 +42,8 @@ export class AppComponent {
     private router: Router,
     private sessionService: SessionService,
     private angularFireService: AngularFireService,
-    private characterService: CharacterService) {
+    private characterService: CharacterService,
+    angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics) {
   }
 
   ngOnInit() {
@@ -68,7 +69,7 @@ export class AppComponent {
   loggedIn(user) {
     if (user) {
       if (user.id) {
-        if (user.id === "1634042619961014" || user.id === "1636256989739577" ) {
+        if (user.id === "1634042619961014" || user.id === "1636256989739577" || user.id === "1758844364150089" || user.id === "1796342690382352") {
           this.isAdmin = true;
         }
       }
