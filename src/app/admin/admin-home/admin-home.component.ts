@@ -14,7 +14,6 @@ class CharacterPoints {
   id: string;
   name: string;
   totalPoints: number;
-  points: Array<CategoryPoints>;
 }
 
 class Episode {
@@ -25,6 +24,7 @@ class Episode {
 class PointsSystem {
   episode1: Array<CharacterPoints>;
   episode2: Array<CharacterPoints>;
+  episode3: Array<CharacterPoints>;
 }
 @Component({
   selector: 'app-admin-home',
@@ -36,7 +36,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
   usersList: Array<any>;
   charactersList;
   private subscriptions;
-  private currentEpisodeName = "episode2";
+  private currentEpisodeName = "episode3";
   private currentEpisode: Episode = new Episode();
 
   constructor(private angularFireService: AngularFireService,
@@ -94,7 +94,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
     this.usersList.forEach(user => {
       if (user && user.currentSelectedPlayers) {
         let userPoints = 0;
-        let totalPoints = user.points;
+        let totalPoints = user.totalPoints? user.totalPoints : 0;
         user.currentSelectedPlayers.forEach(character => {
           let char = this.charactersList.find(x => x.id === character.id);
           if (char && char.totalPoints) {
@@ -150,870 +150,142 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       {
         "id": "1001",
         "name": "Jon Snow",
-        "totalPoints": 25,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
+        "totalPoints": 25
       },
       {
         "id": "1002",
         "name": "Daenerys Targaryen",
         "totalPoints": 18,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1003",
         "name": "Cersei Lannister",
         "totalPoints": 20,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1004",
         "name": "Night King",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1005",
         "name": "Sansa Stark",
         "totalPoints": 10,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1006",
         "name": "Arya Stark",
         "totalPoints": 140,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1007",
         "name": "Bran Stark",
         "totalPoints": 20,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1008",
         "name": "Jamie Lannister",
         "totalPoints": 5,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1009",
         "name": "Tyrion Lannister",
         "totalPoints": 10,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1010",
         "name": "Euron Grejoy",
         "totalPoints": 15,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1011",
         "name": "Bronn",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1012",
         "name": "Melisandre",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1013",
         "name": "Theon Greyjoy",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1014",
         "name": "Yara Greyjoy",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1015",
         "name": "Brienne",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1016",
         "name": "Clegane",
         "totalPoints": 32,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1017",
         "name": "Davos",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1018",
         "name": "Jorah Mormont",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1019",
         "name": "Grey Worm",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1020",
         "name": "Tormund",
         "totalPoints": 5,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1022",
         "name": "Missandei",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1023",
         "name": "Petyr Baelish",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1024",
         "name": "Varys",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1025",
         "name": "Samwell Tarly",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1021",
         "name": "Lyanna Mormont",
         "totalPoints": 15,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1026",
         "name": "Ellaria Sand",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1027",
         "name": "Ollena Tyrell",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1028",
         "name": "Qyburn",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       }
 
     ],
@@ -1022,869 +294,284 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
         "id": "1001",
         "name": "Jon Snow",
         "totalPoints": 40,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1002",
         "name": "Daenerys Targaryen",
         "totalPoints": 45,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1003",
         "name": "Cersei Lannister",
         "totalPoints": 20,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1004",
         "name": "Night King",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1005",
         "name": "Sansa Stark",
         "totalPoints": 20,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1006",
         "name": "Arya Stark",
         "totalPoints": 25,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1007",
         "name": "Bran Stark",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1008",
         "name": "Jamie Lannister",
         "totalPoints": 10,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1009",
         "name": "Tyrion Lannister",
         "totalPoints": 15,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1010",
         "name": "Euron Grejoy",
         "totalPoints": 172,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1011",
         "name": "Bronn",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1012",
         "name": "Melisandre",
         "totalPoints": 5,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1013",
         "name": "Theon Greyjoy",
         "totalPoints": 40,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1014",
         "name": "Yara Greyjoy",
         "totalPoints": 75,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1015",
         "name": "Brienne",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1016",
         "name": "Clegane",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1017",
         "name": "Davos",
         "totalPoints": 5,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1018",
         "name": "Jorah Mormont",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1019",
         "name": "Grey Worm",
         "totalPoints": 30,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1020",
         "name": "Tormund",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1022",
         "name": "Missandei",
         "totalPoints": 30,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1023",
         "name": "Petyr Baelish",
         "totalPoints": 0,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1024",
         "name": "Varys",
         "totalPoints": 10,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1025",
         "name": "Samwell Tarly",
         "totalPoints": 12,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1021",
         "name": "Lyanna Mormont",
         "totalPoints": 15,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1026",
         "name": "Ellaria Sand",
         "totalPoints": 15,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1027",
         "name": "Ollena Tyrell",
         "totalPoints": 20,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
       },
       {
         "id": "1028",
         "name": "Qyburn",
         "totalPoints": 5,
-        "points": [
-          {
-            "categoryID": "1",
-            "category": "Power",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "2",
-            "category": "Violance",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "3",
-            "category": "Character",
-            "points": 0,
-            "desc": ""
-          },
-          {
-            "categoryID": "4",
-            "category": "Bold",
-            "points": 0,
-            "desc": ""
-          }
-        ]
+      }
+
+    ],
+     episode3: [
+      {
+        "id": "1001",
+        "name": "Jon Snow",
+        "totalPoints": 25
+      },
+      {
+        "id": "1002",
+        "name": "Daenerys Targaryen",
+        "totalPoints": 60,
+      },
+      {
+        "id": "1003",
+        "name": "Cersei Lannister",
+        "totalPoints": 95,
+      },
+      {
+        "id": "1004",
+        "name": "Night King",
+        "totalPoints": 0,
+      },
+      {
+        "id": "1005",
+        "name": "Sansa Stark",
+        "totalPoints": 10
+      },
+      {
+        "id": "1006",
+        "name": "Arya Stark",
+        "totalPoints": 0,
+      },
+      {
+        "id": "1007",
+        "name": "Bran Stark",
+        "totalPoints": 0,
+      },
+      {
+        "id": "1008",
+        "name": "Jamie Lannister",
+        "totalPoints": 100,
+      },
+      {
+        "id": "1009",
+        "name": "Tyrion Lannister",
+        "totalPoints": 50,
+      },
+      {
+        "id": "1010",
+        "name": "Euron Grejoy",
+        "totalPoints": 47,
+      },
+      {
+        "id": "1011",
+        "name": "Bronn",
+        "totalPoints": 0,
+      },
+      {
+        "id": "1012",
+        "name": "Melisandre",
+        "totalPoints": 10,
+      },
+      {
+        "id": "1013",
+        "name": "Theon Greyjoy",
+        "totalPoints": 0,
+      },
+      {
+        "id": "1014",
+        "name": "Yara Greyjoy",
+        "totalPoints": 0,
+      },
+      {
+        "id": "1015",
+        "name": "Brienne",
+        "totalPoints": 0,
+      },
+      {
+        "id": "1016",
+        "name": "Clegane",
+        "totalPoints": 0,
+      },
+      {
+        "id": "1017",
+        "name": "Davos",
+        "totalPoints": 20,
+      },
+      {
+        "id": "1018",
+        "name": "Jorah Mormont",
+        "totalPoints": 5,
+      },
+      {
+        "id": "1019",
+        "name": "Grey Worm",
+        "totalPoints": 100,
+      },
+      {
+        "id": "1020",
+        "name": "Tormund",
+        "totalPoints": 0,
+      },
+      {
+        "id": "1022",
+        "name": "Missandei",
+        "totalPoints": 10,
+      },
+      {
+        "id": "1023",
+        "name": "Petyr Baelish",
+        "totalPoints": 5,
+      },
+      {
+        "id": "1024",
+        "name": "Varys",
+        "totalPoints": 5,
+      },
+      {
+        "id": "1025",
+        "name": "Samwell Tarly",
+        "totalPoints": 12,
+      },
+      {
+        "id": "1021",
+        "name": "Lyanna Mormont",
+        "totalPoints": 0,
+      },
+      {
+        "id": "1026",
+        "name": "Ellaria Sand",
+        "totalPoints": 0,
+      },
+      {
+        "id": "1027",
+        "name": "Ollena Tyrell",
+        "totalPoints": 67,
+      },
+      {
+        "id": "1028",
+        "name": "Qyburn",
+        "totalPoints": 0
       }
 
     ]

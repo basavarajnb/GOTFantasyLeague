@@ -69,6 +69,7 @@ export class SessionService {
                     tempUser.first_name = user.first_name ? user.first_name : "Anonymous";
                     tempUser.rank = user.rank ? user.rank : 0;
                     tempUser.points = user.points ? user.points : 0;
+                    tempUser.points = user.totalPoints ? user.totalPoints : 0;
                     this.loggedIn(tempUser);
                 }
                 else {
